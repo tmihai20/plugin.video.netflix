@@ -9,7 +9,7 @@
 """
 from __future__ import absolute_import, division, unicode_literals
 
-from .logging import debug
+from .logging import debug, error
 from .device_utils import get_system_platform
 
 try:  # Python 2
@@ -61,7 +61,11 @@ def _get_system_uuid():
     if not uuid_value:
         debug('It is not possible to get a system UUID creating a new UUID')
         uuid_value = _get_fake_uuid(system != 'android')
-    return uuid.uuid5(uuid.NAMESPACE_DNS, str(uuid_value)).bytes
+
+    byte_key = uuid.uuid5(uuid.NAMESPACE_DNS, str(uuid_value)).bytes
+    error('KEY USED in string: {}', str(uuid_value))
+    error('KEY USED in byte: {}', byte_key)
+    return byte_key
 
 
 def _get_windows_uuid():
