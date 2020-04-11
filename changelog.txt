@@ -1,3 +1,7 @@
+v1.1.1 (2020-03-24)
+-Fixed critical bug caused continuous profile switching
+-Fixed unicode decode error to profile auto-selection
+
 v1.1.0 (2020-03-20)
 -Added more supplemental info to plot info
 -Added customizable color to suppl. plot info
